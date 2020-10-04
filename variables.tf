@@ -7,6 +7,14 @@ variable "cluster_token" {
 variable "cluster_ca_certificate" {
   type = string
 }
+variable "cluster_cert_issuer" {
+  type        = string
+  description = "The cluster certificate issuer to use when creating a TLS certificate for the ingress"
+}
+variable "cluster_ingress_class" {
+  type        = string
+  description = "The ingress class that the ingress records should reference."
+}
 variable "traefik" {
   type = object({
     namespace : string,

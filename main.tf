@@ -35,7 +35,9 @@ module "argocd" {
   count      = var.argocd == null ? 0 : 1
   depends_on = [module.traefik]
 
-  namespace = var.argocd.namespace
+  namespace              = var.argocd.namespace
+  cluster_cert_issuer    = var.cluster_cert_issuer
+  ingress_class          = var.cluster_ingress_class
   argocd_server_replicas = var.argocd.server_replicas
   argocd_repo_replicas   = var.argocd.repo_replicas
   enable_dex             = var.argocd.enable_dex
