@@ -7,6 +7,12 @@ variable "cluster_token" {
 variable "cluster_ca_certificate" {
   type = string
 }
+variable "cert_manager" {
+  type = object({
+
+  })
+  default = null
+}
 variable "traefik" {
   type = object({
     namespace : string,

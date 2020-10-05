@@ -13,6 +13,12 @@
 #    namespace = var.linkerd_namespace
 #}
 
+# 3. Deploy the certificate manager so that we can generate valid certs for our ingresses
+module "cert_manager" {
+  source = "github.com/turnbros/terraform-kubernetes-cert-manager"
+  count  = var.cert_manager == null ? 0 : 1
+}
+
 # 3. Now we deploy/update the clusters ingress controller.
 # TODO: Pat myself on the back for getting this to work.
 module "traefik" {
@@ -36,8 +42,8 @@ module "argocd" {
   depends_on = [module.traefik]
 
   namespace              = var.argocd.namespace
-  cluster_cert_issuer    = ""
-  ingress_class          = module.traefik.ingress_class
+  cluster_cert_issuer    = var.cert_manager == null ? "" : module.cert_manager[0].cert_issuer
+  ingress_class          = var.traefik == null ? "" : module.traefik[0].ingress_class
   argocd_server_replicas = var.argocd.server_replicas
   argocd_repo_replicas   = var.argocd.repo_replicas
   enable_dex             = var.argocd.enable_dex
