@@ -17,6 +17,15 @@
 module "cert_manager" {
   source = "github.com/turnbros/terraform-kubernetes-cert-manager"
   count  = var.cert_manager == null ? 0 : 1
+  certificate_issuers = {
+    letsencrypt = {
+      name = var.cert_manager.certificate_issuers.letsencrypt.name
+      server = var.cert_manager.certificate_issuers.letsencrypt.server
+      email = var.cert_manager.certificate_issuers.letsencrypt.email
+      secret_base64_key = var.cert_manager.certificate_issuers.letsencrypt.secret_base64_key
+      ingress_class = module.traefik[0].ingress_class
+    }
+  }
 }
 
 # 3. Now we deploy/update the clusters ingress controller.

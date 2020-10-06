@@ -15,8 +15,7 @@ variable "cert_manager" {
         name: string,
         server: string,
         email: string,
-        ingress_class: string,
-        labels: map(string)
+        secret_base64_key: string
       })
     })
   })
