@@ -15,6 +15,7 @@ variable "cert_manager" {
         name: string,
         server: string,
         email: string,
+        default_issuer: bool,
         secret_base64_key: string
       })
     })
