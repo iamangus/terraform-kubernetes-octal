@@ -7,12 +7,22 @@ variable "cluster_token" {
 variable "cluster_ca_certificate" {
   type = string
 }
+
 variable "cert_manager" {
   type = object({
-
+    certificate_issuers = object({
+      letsencrypt = object({
+        name: string,
+        server: string,
+        email: string,
+        ingress_class: string,
+        labels: map(string)
+      })
+    })
   })
   default = null
 }
+
 variable "traefik" {
   type = object({
     namespace : string,
