@@ -44,6 +44,7 @@ module "argocd" {
   namespace              = var.argocd.namespace
   cluster_cert_issuer    = var.cert_manager == null ? "" : module.cert_manager[0].cert_issuer
   ingress_class          = var.traefik == null ? "" : module.traefik[0].ingress_class
+  argocd_url             = var.argocd.url
   argocd_server_replicas = var.argocd.server_replicas
   argocd_repo_replicas   = var.argocd.repo_replicas
   enable_dex             = var.argocd.enable_dex
