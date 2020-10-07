@@ -7,3 +7,7 @@ output "cluster_cert_issuer" {
 output "cluster_ingress_class" {
   value = var.traefik == null ? "" : module.traefik[0].ingress_class
 }
+
+output "argocd_namespace" {
+  value = var.argocd == null ? "" : module.argocd.namespace
+}
