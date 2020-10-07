@@ -9,5 +9,5 @@ output "cluster_ingress_class" {
 }
 
 output "argocd_namespace" {
-  value = var.argocd == null ? "" : module.argocd.namespace
+  value = var.argocd == null ? "" : module.argocd[0].namespace
 }
