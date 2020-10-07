@@ -1,4 +1,8 @@
-# terraform-kubernetes-solutions-suite
+# Project OCTAL
+### terraform-kubernetes-octal
+
+Open Policy Agent | Cert-Manager | Traefik | Argo | Linkerd
+
 An opinionated suite of open source projects and configurations aimed at simplifying the deployment and management of enterprise Kubernetes clusters.
 
 ## Suite Components
@@ -6,10 +10,10 @@ An opinionated suite of open source projects and configurations aimed at simplif
 | Name                  | Version   | Status    |
 | --------------------- | --------- | --------- |
 | Open Policy Agent     | v0.23.2 | In Progress  |
-| Jetstack Cert-Manager | v1.0.2 | Not Started  |
-| Linkerd2              | stable-2.7.1  | In Progress  |
+| Cert-Manager | v1.0.2 | Not Started  |
 | Traefik               | v2.3.1 | Beta  |
 | ArgoCD                | v1.7.7 | Beta  |
+| Linkerd2              | stable-2.7.1  | In Progress  |
 | Argo Rollouts         | v0.9.1 | Not Started  |
 
 ### Component Details
