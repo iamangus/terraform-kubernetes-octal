@@ -10,7 +10,7 @@ An opinionated suite of open source projects and configurations aimed at simplif
 | Name                  | Version   | Status    |
 | --------------------- | --------- | --------- |
 | Open Policy Agent     | v0.23.2 | In Progress  |
-| Cert-Manager | v1.0.2 | Not Started  |
+| Cert-Manager | v1.0.2 | Beta  |
 | Traefik               | v2.3.1 | Beta  |
 | ArgoCD                | v1.7.7 | Beta  |
 | Linkerd2              | stable-2.7.1  | In Progress  |
