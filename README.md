@@ -19,11 +19,11 @@ An opinionated suite of open source projects and configurations aimed at simplif
 ### Component Details
 - Open Policy Agent
     - Homepage: https://www.openpolicyagent.org
-    - Github: 
+    - Github: https://github.com/open-policy-agent/opa
     - License: Apache-2.0 (https://choosealicense.com/licenses/apache-2.0)
 - Jetstack Cert-Manager
     - Homepage: https://cert-manager.io/
-    - Github:
+    - Github: https://github.com/jetstack/cert-manager
     - License: Apache-2.0 (https://choosealicense.com/licenses/apache-2.0)
 - Linkerd2
     - Homepage: https://linkerd.io
