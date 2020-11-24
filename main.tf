@@ -1,29 +1,29 @@
 # 1. First we're going to want to deploy/update our security enforcement layer.
 # TODO: Finish this module.
 #module "open_policy_agent" {
-#    source = "github.com/dylanturn/terraform-kubernetes-opa-gatekeeper"
+#    source = "github.com/project-octal/terraform-kubernetes-opa-gatekeeper"
 #    namespace = var.opa_namespace
 #}
 
 # 2. Next we need to deploy/update the clusters service mesh.
 # TODO: Finish this module.
 #module "linkerd" {
-#    source = "github.com/dylanturn/terraform-kubernetes-linkerd"
+#    source = "github.com/project-octal/terraform-kubernetes-linkerd"
 #    depends_on = [module.open_policy_agent]
 #    namespace = var.linkerd_namespace
 #}
 
 # 3. Deploy the certificate manager so that we can generate valid certs for our ingresses
 module "cert_manager" {
-  source = "github.com/turnbros/terraform-kubernetes-cert-manager"
+  source = "github.com/project-octal/terraform-kubernetes-cert-manager"
   count  = var.cert_manager == null ? 0 : 1
   certificate_issuers = {
     letsencrypt = {
-      name = var.cert_manager.certificate_issuers.letsencrypt.name
-      server = var.cert_manager.certificate_issuers.letsencrypt.server
-      email = var.cert_manager.certificate_issuers.letsencrypt.email
+      name              = var.cert_manager.certificate_issuers.letsencrypt.name
+      server            = var.cert_manager.certificate_issuers.letsencrypt.server
+      email             = var.cert_manager.certificate_issuers.letsencrypt.email
       secret_base64_key = var.cert_manager.certificate_issuers.letsencrypt.secret_base64_key
-      default_issuer: var.cert_manager.certificate_issuers.letsencrypt.default_issuer,
+      default_issuer : var.cert_manager.certificate_issuers.letsencrypt.default_issuer,
       ingress_class = module.traefik[0].ingress_class
     }
   }
@@ -32,7 +32,7 @@ module "cert_manager" {
 # 3. Now we deploy/update the clusters ingress controller.
 # TODO: Pat myself on the back for getting this to work.
 module "traefik" {
-  source = "github.com/dylanturn/terraform-kubernetes-traefik?ref=replace_helm"
+  source = "github.com/project-octal/terraform-kubernetes-traefik?ref=replace_helm"
   count  = var.traefik == null ? 0 : 1
   # depends_on = [module.open_policy_agent, module.linkerd]
 
@@ -47,7 +47,7 @@ module "traefik" {
 # 4. Lastly, deploy/update the CICD orchestrator.
 # TODO: Pat myself on the back for getting this to work.
 module "argocd" {
-  source     = "github.com/dylanturn/terraform-kubernetes-argocd"
+  source     = "github.com/project-octal/terraform-kubernetes-argocd"
   count      = var.argocd == null ? 0 : 1
   depends_on = [module.traefik]
 

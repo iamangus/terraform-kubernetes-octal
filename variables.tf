@@ -12,11 +12,11 @@ variable "cert_manager" {
   type = object({
     certificate_issuers = object({
       letsencrypt = object({
-        name: string,
-        server: string,
-        email: string,
-        default_issuer: bool,
-        secret_base64_key: string
+        name : string,
+        server : string,
+        email : string,
+        default_issuer : bool,
+        secret_base64_key : string
       })
     })
   })
