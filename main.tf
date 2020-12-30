@@ -32,7 +32,7 @@ module "cert_manager" {
 # 3. Now we deploy/update the clusters ingress controller.
 # TODO: Pat myself on the back for getting this to work.
 module "traefik" {
-  source = "github.com/project-octal/terraform-kubernetes-traefik?ref=replace_helm"
+  source = "github.com/project-octal/terraform-kubernetes-traefik"
   count  = var.traefik == null ? 0 : 1
   # depends_on = [module.open_policy_agent, module.linkerd]
 
