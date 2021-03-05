@@ -11,6 +11,7 @@ variable "client_certificate" {
 }
 variable "cluster_token" {
   type = string
+  default = null
 }
 variable "cluster_ca_certificate" {
   type = string
