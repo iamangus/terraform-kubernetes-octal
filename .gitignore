@@ -1,6 +1,9 @@
 .idea
 .DS_Store
 
+# Some file that's appeared after TF14
+.terraform.lock.hcl
+
 # Local .terraform directories
 **/.terraform/*
 

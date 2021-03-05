@@ -3,6 +3,7 @@ variable "cluster_endpoint" {
 }
 variable "cluster_token" {
   type = string
+  sensitive = true
 }
 variable "cluster_ca_certificate" {
   type = string
@@ -34,14 +35,15 @@ variable "traefik" {
   })
   default = null
 }
+
 variable "argocd" {
   type = object({
     url : string,
-    namespace : string,
-    server_replicas : number,
-    repo_replicas : number,
-    enable_dex : bool,
-    enable_ha_redis : bool,
+    namespace : optional(string),
+    server_replicas : optional(number),
+    repo_replicas : optional(number),
+    enable_dex : optional(bool),
+    enable_ha_redis : optional(bool),
     oidc_name : string,
     oidc_issuer : string,
     oidc_client_id : string,
