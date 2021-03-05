@@ -1,5 +1,6 @@
 provider "kubernetes" {
-   load_config_file = true
+  client_certificate     = var.client_certificate
+  client_key             = var.client_key
   host                   = var.cluster_endpoint
   token                  = var.cluster_token
   cluster_ca_certificate = base64decode(var.cluster_ca_certificate)
