@@ -10,7 +10,7 @@ variable "client_certificate" {
   default = null
 }
 variable "cluster_token" {
-  type = string
+  type    = string
   default = null
 }
 variable "cluster_ca_certificate" {
@@ -40,9 +40,17 @@ variable "traefik" {
     rolling_update_max_surge : number,
     rolling_update_max_unavailable : number,
     pod_termination_grace_period_seconds : number
+    service_type : string,
+    preferred_node_selector : list(object({
+      weight   = number,
+      key      = string,
+      operator = string,
+      values   = list(string)
+    }))
   })
   default = null
 }
+
 variable "argocd" {
   type = object({
     url : string,

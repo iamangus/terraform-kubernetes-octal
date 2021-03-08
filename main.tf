@@ -42,6 +42,8 @@ module "traefik" {
   rolling_update_max_surge             = var.traefik.rolling_update_max_surge
   rolling_update_max_unavailable       = var.traefik.rolling_update_max_unavailable
   pod_termination_grace_period_seconds = var.traefik.pod_termination_grace_period_seconds
+  service_type                         = var.traefik.service_type
+  preferred_node_selector              = var.traefik.preferred_node_selector
 }
 
 # 4. Lastly, deploy/update the CICD orchestrator.
