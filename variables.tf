@@ -1,22 +1,3 @@
-variable "cluster_endpoint" {
-  type = string
-}
-variable "client_key" {
-  type    = string
-  default = null
-}
-variable "client_certificate" {
-  type    = string
-  default = null
-}
-variable "cluster_token" {
-  type    = string
-  default = null
-}
-variable "cluster_ca_certificate" {
-  type = string
-}
-
 variable "cert_manager" {
   type = object({
     certificate_issuers = object({
