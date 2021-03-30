@@ -1,7 +1,7 @@
 variable "octal_oidc_config" {
   type = object({
     oidc_groups_prefix = optional(string),
-    oidc_cluster_role_bindings = optional(set(object({
+    oidc_cluster_role_bindings = optional(list(object({
       cluster_role_name = string
       oidc_group_name   = string
     })))
