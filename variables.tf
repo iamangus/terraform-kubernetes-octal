@@ -50,17 +50,38 @@ variable "argocd" {
   default = null
 }
 
-variable "oidc_groups_prefix" {
-  type        = string
-  description = "The prefix attached to OIDC groups bound to cluster roles. Needs to match the value given to the kube-api-server argument `--oidc-groups-prefix`"
-  default     = "oidc:"
+#variable "oidc_groups_prefix" {
+#  type        = string
+#  description = ""
+#  default     = "oidc:"
+#}
+#
+#variable "oidc_cluster_role_bindings" {
+#  type = string
+#  description = ""
+#  default     = []
+#}
+
+variable "octal_oidc_config" {
+  type = object({
+    oidc_groups_prefix = string,
+    oidc_cluster_role_bindings = set(object({
+      cluster_role_name = string
+      oidc_group_name   = string
+    }))
+  })
+  description = "`oidc_groups_prefix` is the prefix attached to OIDC groups bound to cluster roles. Needs to match the value given to the kube-api-server argument `--oidc-groups-prefix`. `oidc_cluster_role_bindings` is a set of OIDC group and cluster role names to map to one another."
+  default     = null
 }
 
-variable "oidc_cluster_role_bindings" {
-  type = set(object({
-    cluster_role_name = string
-    oidc_group_name   = string
-  }))
-  description = "The name of the OIDC groups to bind to the builtin `cluster-admin` cluster role."
-  default     = []
+variable "octal_extras" {
+  type = object({
+    namespace = string,
+    enabled_extras = object({
+      kubedb = optional(bool)
+      rookio = optional(bool)
+    })
+  })
+  description = "`namespace` is the namespace the extras will be deployed to, and enabled extras is a map(bool) of extras to enable."
+  default     = null
 }
