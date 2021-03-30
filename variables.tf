@@ -50,18 +50,6 @@ variable "argocd" {
   default = null
 }
 
-#variable "oidc_groups_prefix" {
-#  type        = string
-#  description = ""
-#  default     = "oidc:"
-#}
-#
-#variable "oidc_cluster_role_bindings" {
-#  type = string
-#  description = ""
-#  default     = []
-#}
-
 variable "octal_oidc_config" {
   type = object({
     oidc_groups_prefix = string,
@@ -76,7 +64,7 @@ variable "octal_oidc_config" {
 
 variable "octal_extras" {
   type = object({
-    namespace = string,
+    namespace = optional(string),
     enabled_extras = object({
       kubedb = optional(bool)
       rookio = optional(bool)
