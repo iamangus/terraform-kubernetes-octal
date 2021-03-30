@@ -70,3 +70,10 @@ module "argocd" {
     requested_id_token_claims = var.argocd.oidc_requested_id_token_claims
   }
 }
+
+# 5. Configure OIDC auth and cluster access.
+module "oidc_rbac" {
+  source     = "github.com/project-octal/terraform-kubernetes-api-oidc-auth"
+  oidc_groups_prefix = var.oidc_groups_prefix
+  oidc_cluster_role_bindings = var.oidc_cluster_role_bindings
+}
