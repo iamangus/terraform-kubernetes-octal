@@ -1,4 +1,8 @@
-# Project OCTAL
+<p align="center">
+  <img width="460" height="300" src="https://github.com/project-octal/terraform-kubernetes-octal/raw/main/docs/images/project-octal.png">
+</p>
+
+---
 ### terraform-kubernetes-octal
 
 Open Policy Agent | Cert-Manager | Traefik | Argo | Linkerd
