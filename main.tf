@@ -17,6 +17,7 @@
 module "cert_manager" {
   source = "github.com/project-octal/terraform-kubernetes-cert-manager"
   count  = var.cert_manager == null ? 0 : 1
+
   certificate_issuers = {
     letsencrypt = {
       name              = var.cert_manager.certificate_issuers.letsencrypt.name
@@ -42,6 +43,8 @@ module "traefik" {
   rolling_update_max_surge             = var.traefik.rolling_update_max_surge
   rolling_update_max_unavailable       = var.traefik.rolling_update_max_unavailable
   pod_termination_grace_period_seconds = var.traefik.pod_termination_grace_period_seconds
+  service_type                         = var.traefik.service_type
+  preferred_node_selector              = var.traefik.preferred_node_selector
 }
 
 # 4. Lastly, deploy/update the CICD orchestrator.
@@ -67,4 +70,23 @@ module "argocd" {
     requested_scopes          = var.argocd.oidc_requested_scopes,
     requested_id_token_claims = var.argocd.oidc_requested_id_token_claims
   }
+}
+
+# 5. Configure OIDC auth and cluster access.
+module "oidc_rbac" {
+  source = "github.com/project-octal/terraform-kubernetes-api-oidc-auth"
+  count  = var.octal_oidc_config == null ? 0 : 1
+
+  oidc_groups_prefix         = var.octal_oidc_config.oidc_groups_prefix
+  oidc_cluster_role_bindings = var.octal_oidc_config.oidc_cluster_role_bindings
+}
+
+# 6. deploy any extras
+module "octal-extras" {
+  source = "github.com/project-octal/terraform-kubernetes-octal-extras"
+  count  = var.octal_extras == null ? 0 : 1
+
+  argocd_namespace     = module.argocd[0].namespace
+  deployment_namespace = var.octal_extras.namespace
+  enabled_extras       = var.octal_extras.enabled_extras
 }
