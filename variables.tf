@@ -6,7 +6,7 @@ variable "octal_oidc_config" {
       oidc_group_name   = string
     })))
   })
-  description = "`oidc_groups_prefix` is the prefix attached to OIDC groups bound to cluster roles. Needs to match the value given to the kube-api-server argument `--oidc-groups-prefix`.\n`oidc_cluster_role_bindings` is a set of OIDC group and cluster role names to map to one another."
+  description = "`oidc_groups_prefix` is the prefix attached to OIDC groups bound to cluster roles. Needs to match the value given to the kube-api-server argument `--oidc-groups-prefix`. `oidc_cluster_role_bindings` is a set of OIDC group and cluster role names to map to one another."
   default     = null
 }
 
