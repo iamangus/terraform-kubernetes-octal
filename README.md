@@ -1,5 +1,5 @@
 <p align="center">
-  <img width="460" height="300" src="https://github.com/project-octal/terraform-kubernetes-octal/raw/main/docs/images/project-octal.svg">
+  <img width="460" height="300" src="https://github.com/project-octal/terraform-kubernetes-octal/raw/main/docs/images/project-octal.svg" unselectable="on">
 </p>
 
 ---
