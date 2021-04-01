@@ -87,6 +87,6 @@ module "octal-extras" {
   count  = var.octal_extras == null ? 0 : 1
 
   argocd_namespace             = module.argocd[0].namespace
-  default_deployment_namespace = var.octal_extras.namespace == null ? null : var.octal_extras.namespace
+  default_deployment_namespace = var.octal_extras.namespace
   enabled_extras               = var.octal_extras.enabled_extras
 }
