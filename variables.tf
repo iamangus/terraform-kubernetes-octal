@@ -13,10 +13,16 @@ variable "octal_oidc_config" {
 variable "octal_extras" {
   type = object({
     namespace = optional(string),
-    enabled_extras = optional(object({
-      kubedb = optional(bool)
-      rookio = optional(bool)
-    }))
+    enabled_extras = object({
+      kubedb = optional(object({
+        enabled   = bool
+        namespace = optional(string)
+      }))
+      rookio = optional(object({
+        enabled   = bool
+        namespace = optional(string)
+      }))
+    })
   })
   description = "`namespace` is the namespace the extras will be deployed to, and enabled extras is a map(bool) of extras to enable."
   default     = null

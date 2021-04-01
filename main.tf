@@ -86,7 +86,7 @@ module "octal-extras" {
   source = "github.com/project-octal/terraform-kubernetes-octal-extras"
   count  = var.octal_extras == null ? 0 : 1
 
-  argocd_namespace     = module.argocd[0].namespace
-  deployment_namespace = var.octal_extras.namespace
-  enabled_extras       = var.octal_extras.enabled_extras
+  argocd_namespace             = module.argocd[0].namespace
+  default_deployment_namespace = var.octal_extras.namespace
+  enabled_extras               = var.octal_extras.enabled_extras
 }
