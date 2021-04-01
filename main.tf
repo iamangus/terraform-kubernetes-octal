@@ -80,13 +80,3 @@ module "oidc_rbac" {
   oidc_groups_prefix         = var.octal_oidc_config.oidc_groups_prefix
   oidc_cluster_role_bindings = var.octal_oidc_config.oidc_cluster_role_bindings
 }
-
-# 6. deploy any extras
-module "octal-extras" {
-  source = "github.com/project-octal/terraform-kubernetes-octal-extras"
-  count  = var.octal_extras == null ? 0 : 1
-
-  argocd_namespace             = module.argocd[0].namespace
-  default_deployment_namespace = var.octal_extras.namespace
-  enabled_extras               = var.octal_extras.enabled_extras
-}
