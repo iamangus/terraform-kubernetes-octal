@@ -6,17 +6,23 @@ variable "octal_oidc_config" {
       oidc_group_name   = string
     })))
   })
-  description = "`oidc_groups_prefix` is the prefix attached to OIDC groups bound to cluster roles. Needs to match the value given to the kube-api-server argument `--oidc-groups-prefix`.\n`oidc_cluster_role_bindings` is a set of OIDC group and cluster role names to map to one another."
+  description = "`oidc_groups_prefix` is the prefix attached to OIDC groups bound to cluster roles. Needs to match the value given to the kube-api-server argument `--oidc-groups-prefix`. `oidc_cluster_role_bindings` is a set of OIDC group and cluster role names to map to one another."
   default     = null
 }
 
 variable "octal_extras" {
   type = object({
     namespace = optional(string),
-    enabled_extras = optional(object({
-      kubedb = optional(bool)
-      rookio = optional(bool)
-    }))
+    enabled_extras = object({
+      kubedb = optional(object({
+        enabled   = bool
+        namespace = optional(string)
+      }))
+      rookio = optional(object({
+        enabled   = bool
+        namespace = optional(string)
+      }))
+    })
   })
   description = "`namespace` is the namespace the extras will be deployed to, and enabled extras is a map(bool) of extras to enable."
   default     = null
