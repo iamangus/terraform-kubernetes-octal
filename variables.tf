@@ -45,6 +45,7 @@ variable "cert_manager" {
 
 variable "traefik" {
   type = object({
+    image_tag: optional(string),
     namespace : string,
     log_level : string,
     replicas : number,
