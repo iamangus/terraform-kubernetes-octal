@@ -26,13 +26,6 @@ module "cert_manager" {
       secret_base64_key = var.cert_manager.certificate_issuers.letsencrypt.secret_base64_key
       solvers           = var.cert_manager.certificate_issuers.letsencrypt.solvers
     }
-    slvr_dns01_cf = {
-        emailcf                 = var.cert_manager.certificate_issuers.slvr_dns01_cf.emailcf
-        secret_base64_cfapikey  = var.cert_manager.certificate_issuers.slvr_dns01_cf.secret_base64_cfapikey
-    }
-    slvr_http01 = {
-        ingress_class           = module.traefik[0].ingress_class
-    }
   }
 }
 
