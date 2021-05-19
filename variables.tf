@@ -38,6 +38,13 @@ variable "cert_manager" {
         default_issuer : bool,
         secret_base64_key : string
       })
+      slvr_http01 = object({
+        ingress_class : string
+      })
+      slvr_dns01_cf = object({
+        emailcf : string,
+        secret_base64_cfapikey : string
+    })
     })
   })
   default = null
