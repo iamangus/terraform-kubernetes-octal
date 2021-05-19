@@ -54,6 +54,9 @@ variable "cert_manager" {
           }))
         })
       })
+    })
+  })
+}
 
 variable "traefik" {
   type = object({
