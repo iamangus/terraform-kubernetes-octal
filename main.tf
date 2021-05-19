@@ -15,7 +15,7 @@
 
 # 3. Deploy the certificate manager so that we can generate valid certs for our ingresses
 module "cert_manager" {
-  source = "github.com/iamangus/terraform-kubernetes-cert-manager"
+  source = "github.com/iamangus/terraform-kubernetes-cert-manager/tree/feature/meddling-dylan"
   count  = var.cert_manager == null ? 0 : 1
 
   certificate_issuers = {
