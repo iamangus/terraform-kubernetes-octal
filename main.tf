@@ -31,6 +31,9 @@ module "cert_manager" {
         emailcf                 = var.cert_manager.certificate_issuers.slvr_dns01_cf.emailcf
         secret_base64_cfapikey  = var.cert_manager.certificate_issuers.slvr_dns01_cf.secret_base64_cfapikey
     }
+    slvr_http01 = {
+        ingress_class           = module.traefik[0].ingress_class
+    }
   }
 }
 
