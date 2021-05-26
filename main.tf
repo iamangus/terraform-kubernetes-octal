@@ -37,6 +37,7 @@ module "traefik" {
   count  = var.traefik == null ? 0 : 1
   # depends_on = [module.open_policy_agent, module.linkerd]
 
+  image_tag                            = var.traefik.image_tag
   namespace                            = var.traefik.namespace
   log_level                            = var.traefik.log_level
   replicas                             = var.traefik.replicas
