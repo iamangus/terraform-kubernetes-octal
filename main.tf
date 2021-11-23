@@ -50,10 +50,7 @@ module "traefik" {
 # 4. Lastly, deploy/update the CICD orchestrator.
 # TODO: Pat myself on the back for getting this to work.
 module "argocd" {
-#  source     = "github.com/project-octal/terraform-kubernetes-argocd"
-  source  = "project-octal/argocd/kubernetes"
-  version = "0.0.5"
-  
+  source     = "github.com/project-octal/terraform-kubernetes-argocd"
   count      = var.argocd == null ? 0 : 1
   depends_on = [module.traefik]
 
