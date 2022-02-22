@@ -81,6 +81,7 @@ variable "traefik" {
 variable "argocd" {
   type = object({
     url : string,
+    image_tag : string,
     namespace : string,
     server_replicas : number,
     repo_replicas : number,
